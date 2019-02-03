@@ -1,6 +1,6 @@
-from car import Car
+from battery import Battery
 
-class NissanLeaf(Car):
+class NissanLeafBattery(Battery):
     nissan_leaf_battery_capacity = 40
     nissan_leaf_system_voltage = 360
     def __init__(self):

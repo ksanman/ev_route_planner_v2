@@ -1,4 +1,4 @@
-class Car:
+class Battery:
     kwh_to_watt_hour_conversion_factor = 1000
     lion_battery_efficiency = .90
 
@@ -31,5 +31,5 @@ class Car:
         return self.ahToKwh(charge) /  self.batteryCapacityKwh
 
 
-    def drive(self, distance, elevation, speedTraveled):
+    def expend(self, distance, elevation, speedTraveled):
         pass

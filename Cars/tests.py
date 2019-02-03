@@ -1,10 +1,10 @@
-from car import Car
-from nissan_leaf import NissanLeaf
+from battery import Battery
+from nissan_leaf_battery import NissanLeafBattery
 import unittest
 
 class Test_Car(unittest.TestCase):
     def initialize(self):
-        return Car(100, 360)
+        return Battery(100, 360)
 
     def test_initialize(self):
         car = self.initialize()
@@ -23,12 +23,12 @@ class Test_Car(unittest.TestCase):
         self.assertEqual(car.ahToKwh(277.77777777777777), 100)
 
     def test_charge(self):
-        car1 = Car(100, 360)
-        self.assertEqual(car1.charge(.75, 10), 0.024300000000000002)
+        car = self.initialize()
+        self.assertEqual(car.charge(.75, 10), 0.024300000000000002)
 
 class Test_NissanLeaf(unittest.TestCase):
     def initialize(self):
-        return NissanLeaf()
+        return NissanLeafBattery()
 
     def test_initialize(self):
         car = self.initialize()
@@ -40,8 +40,8 @@ class Test_NissanLeaf(unittest.TestCase):
         self.assertEqual(car.systemVoltage, 360)
 
     def test_charge(self):
-        car1 = NissanLeaf()
-        self.assertEqual(car1.charge(.75, 10), .060750000000000005)
+        car = self.initialize()
+        self.assertEqual(car.charge(.75, 10), .060750000000000005)
 
 if __name__ == '__main__':
     unittest.main(exit=False)

@@ -1,12 +1,13 @@
 import requests
 import time
 import json
+import polyline
 
 class OSRM:
     def __init__(self, request_base_uri="http://router.project-osrm.org/", 
         route_export_path="data/route.txt"):
 
-        if  "http://" not in request_base_uri or "https://" not in request_base_uri:
+        if  "http://" not in request_base_uri and "https://" not in request_base_uri:
             raise Exception("Not a valid URL! Url must contain 'http' or 'https'")
 
         self.route_request_string = request_base_uri + "route/v1/driving/{0},{1};{2},{3}?overview=full&steps=true&annotations=speed"
@@ -24,6 +25,9 @@ class OSRM:
 
     def getElevationFromSegment(self, start, end):
         return 0
+
+    def decodePolyline(self, line):
+        return polyline.decode(line)
 
     def getResponse(self, request_url):
         for _ in range(3):

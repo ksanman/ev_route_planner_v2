@@ -1,5 +1,4 @@
 from osrm import OSRM
-import polyline
 import json
 from coordinate import Coordinate
 
@@ -10,8 +9,10 @@ class Route:
     def buildRoute(self, startingCoordinate, endingCoordinate):
         osrmRouteData = self.routingMachine.getFullRoute(startingCoordinate, endingCoordinate)
         routeJson = osrmRouteData["routes"][0]
-        self.routePolyline = polyline.decode(routeJson["geometry"])
+        self.routePolyline = self.routingMachine.decodePolyline(routeJson["geometry"])
         self.intersections = self.getIntersections(routeJson)
+
+        return buildRoute()
 
     def getIntersections(self, routeJson):
         intersections = []
@@ -23,4 +24,5 @@ class Route:
 
         return intersections
 
-    
+    def buildRoute():
+        pass
